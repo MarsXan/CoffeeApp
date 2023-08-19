@@ -22,26 +22,20 @@ class BaseViewModel<T>: ObservableObject {
     func onEvent(_ event: T) {
     }
 
-    func setError(_ error: ErrorModel) async {
-        await MainActor.run(body: {
-            self.viewState = .error(error)
-        })
+    func setError(_ error: ErrorModel) {
+        self.viewState = .error(error)
     }
 
     func setLoading() async {
-        await MainActor.run(body: {
-            self.viewState = .loading
-        })
+        self.viewState = .loading
     }
     
     func runUI(_ block:@Sendable @escaping () -> Void) async {
         await MainActor.run(body: block)
     }
     
-    func setState(_ state:ViewState) async{
-        await MainActor.run(body: {
-            viewState = state
-        })
+    func setState(_ state:ViewState) {
+        viewState = state
     }
     
     
