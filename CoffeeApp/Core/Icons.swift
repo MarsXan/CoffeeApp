@@ -18,4 +18,6 @@ struct Icons{
     static let search = "search"
     static let orders = "orders"
     static let menu = "menu"
+    static let add = "add"
+    static let minus = "minus"
 }

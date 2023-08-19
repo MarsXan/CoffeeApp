@@ -9,4 +9,5 @@ struct Images{
     static let cappucino = "cappucino"
     static let espresso = "espresso"
     static let latte = "latte"
+    static let error = "error"
 }

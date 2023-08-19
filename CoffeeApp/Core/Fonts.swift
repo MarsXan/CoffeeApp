@@ -21,7 +21,7 @@ extension Font {
         .custom(sansBold, size: 24)
     }
     static var header3: Font {
-        .custom(sansBold, size: 23)
+        .custom(sansBold, size: 22)
     }
     static var header4: Font {
         .custom(sansBold, size: 20)
