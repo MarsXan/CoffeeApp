@@ -30,7 +30,7 @@ private extension MainRouter {
             HomeView()
                 .environmentObject(router(route: route))
         case .productDetail(let product, let animation):
-            FavoriteView()
+            ProductDetailView(product: product, animation: animation)
                 .environmentObject(router(route: route))
         }
     }

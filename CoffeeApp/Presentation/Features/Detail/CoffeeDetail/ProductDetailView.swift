@@ -12,7 +12,7 @@ struct ProductDetailView: View {
     
     var product: Product
 //    @Binding var showDetail: Bool
-//    var animation: Namespace.ID
+    var animation: Namespace.ID
     @EnvironmentObject var router:MainRouter
     @State private var showContent = false
     @State private var count = 0
@@ -29,7 +29,7 @@ struct ProductDetailView: View {
                 WebImage(url: URL(string: product.image))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-//                    .matchedGeometryEffect(id: product.name, in: animation)
+                    .matchedGeometryEffect(id: product.name, in: animation)
                     .frame(width: getRect().width, height: 350)
                     .cornerRadius(0)
                     .ignoresSafeArea()
@@ -162,16 +162,16 @@ struct ProductDetailView: View {
     
 }
 
-struct ProductDetailView_Previews: PreviewProvider {
-    @Namespace var animation
-    static var previews: some View {
-        ProductDetailView(product: .init(
-            id:"3",
-            name: "Herbal Tea",
-            price: 4.5,
-            image: "https://img.freepik.com/free-photo/fresh-lemonade-rustic-table-with-organic-ingredients-generated-by-ai_188544-31783.jpg?t=st=1692198150~exp=1692201750~hmac=c7f5ee31f2483ad709e97770e5301e7b7800eb5fbeccfe659f4c167cfd99d998&w=1800",
-            description: "Herbal teas—less commonly called tisanes are beverages made from the infusion or decoction of herbs, spices, or other plant material in hot water.",
-            category: .hotTeas
-        ))
-    }
-}
+//struct ProductDetailView_Previews: PreviewProvider {
+//    @Namespace var animation
+//    static var previews: some View {
+//        ProductDetailView(product: .init(
+//            id:"3",
+//            name: "Herbal Tea",
+//            price: 4.5,
+//            image: "https://img.freepik.com/free-photo/fresh-lemonade-rustic-table-with-organic-ingredients-generated-by-ai_188544-31783.jpg?t=st=1692198150~exp=1692201750~hmac=c7f5ee31f2483ad709e97770e5301e7b7800eb5fbeccfe659f4c167cfd99d998&w=1800",
+//            description: "Herbal teas—less commonly called tisanes are beverages made from the infusion or decoction of herbs, spices, or other plant material in hot water.",
+//            category: .hotTeas
+//        ))
+//    }
+//}
