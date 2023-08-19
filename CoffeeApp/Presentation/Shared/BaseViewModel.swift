@@ -11,10 +11,8 @@ import Combine
 
 class BaseViewModel<T>: ObservableObject {
 
-    @Published var showLoading: Bool = false
-    @Published var showError: Bool = false
-    @Published var errorMessage: String = ""
-    @Published var isLoading: Bool = false
+    @Published var error:ErrorModel? = nil
+    @Published var viewState:ViewState = .loaded
     var cancellables = Set<AnyCancellable>()
     
     deinit {
@@ -26,21 +24,28 @@ class BaseViewModel<T>: ObservableObject {
 
     func setError(_ error: ErrorModel) async {
         await MainActor.run(body: {
-            self.isLoading = false
-            self.errorMessage = error.message ?? ""
-            self.showError = true
+            self.viewState = .error(error)
         })
     }
 
-    func setLoading(_ isLoading: Bool) async {
+    func setLoading() async {
         await MainActor.run(body: {
-            self.isLoading = isLoading
+            self.viewState = .loading
         })
     }
     
-    func runUI(_ block:@Sendable () -> Void) async {
+    func runUI(_ block:@Sendable @escaping () -> Void) async {
         await MainActor.run(body: block)
     }
+    
+    func setState(_ state:ViewState) async{
+        await MainActor.run(body: {
+            viewState = state
+        })
+    }
+    
+    
+    
     
     
     
