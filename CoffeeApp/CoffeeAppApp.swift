@@ -6,12 +6,27 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct CoffeeAppApp: App {
+    init(){
+        FirebaseApp.configure()
+        registerDependencies()
+    
+        
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
+    }
+    
+    func registerDependencies(){
+       
+        DependencyResolver.register(type: HomeApiService.self, HomeApiService())
+        DependencyResolver.register(type: HomeRepository.self, HomeRepositoryImpl())
+        
+        
     }
 }
