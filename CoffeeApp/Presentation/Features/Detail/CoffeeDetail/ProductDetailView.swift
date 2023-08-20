@@ -15,7 +15,7 @@ struct ProductDetailView: View {
     var animation: Namespace.ID
     @EnvironmentObject var router:MainRouter
     @State private var showContent = false
-    @State private var count = 0
+    @State private var count = 1
     @State private var selectedSize:SizeType = .small
     @State private var extraPrice = 0.0
     
@@ -39,27 +39,38 @@ struct ProductDetailView: View {
 //                            showDetail.toggle()
                         }
                     }.zIndex(1)
-                
-                
-                VStack{
-                    
-                    Spacer()
-                    sizeView()
-                    countView()
-                    
-                    addToCartView()
+            
+            VStack{
+                ScrollView{
+                    VStack{
+                        Text("Ingredients")
+                            .font(.header4)
+                            .foregroundColor(.coffeeDark)
+                        QuantityView()
+                            .frame(height:110)
+                            
+                        Spacer()
+                        sizeView()
+                        countView()
+                    }
                 }
-                .frame(width:getRect().width)
-                .frame(maxHeight:.infinity)
-                .background{
-                    CurvedShape(height: getRect().height-getRect().height/2.6,curveHeight:80)
-                    .fill(Color.coffeeLight)
-                    .padding(.top,getRect().height/2.6)
-                }
-                .opacity(showContent ? 1 : 0)
-                .offset(y:showContent ? 0 : 100)
-                .zIndex(2)
-                .ignoresSafeArea()
+                
+               
+                
+                addToCartView()
+            }
+            .frame(width:getRect().width,height:getRect().height-getRect().height/2.6)
+            .frame(maxHeight:.infinity)
+            .background{
+                CurvedShape(height: getRect().height-getRect().height/2.6,curveHeight:80)
+                .fill(Color.coffeeLight)
+                
+            }
+            .padding(.top,getRect().height/2.6)
+            .opacity(showContent ? 1 : 0)
+            .offset(y:showContent ? 0 : 100)
+            .zIndex(2)
+            .ignoresSafeArea()
             
             
                 
