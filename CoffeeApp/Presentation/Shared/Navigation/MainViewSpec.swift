@@ -9,7 +9,7 @@ import SwiftUI
 
 enum MainViewSpec: ViewSpec {
     case home
-    case productDetail(Product, Namespace.ID)
+    case productDetail(Product)
 }
 extension MainViewSpec: Identifiable {
     

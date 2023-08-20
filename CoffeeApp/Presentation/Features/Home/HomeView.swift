@@ -69,7 +69,7 @@ struct HomeView: View {
                                                 .matchedGeometryEffect(id: item.name, in: animation)
                                                 .padding(.top,48)
                                                 .onTapGesture {
-                                                    router.navigateTo(.productDetail(item, animation))
+                                                    router.navigateTo(.productDetail(item))
                                                 }
                                                 }
                                         

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct SizeView: View {
-    @Binding var selectedSize:SizeType
+    var selectedSize:SizeType
     var size:SizeType
+    var onTab:()->Void = {}
+    
+    
     var body: some View {
         VStack{
             RoundedRectangle(cornerRadius: 16)
@@ -27,15 +30,13 @@ struct SizeView: View {
                 .foregroundColor(.coffeeDark)
                 .opacity(selectedSize == size ? 1 : 0.5)
         }.onTapGesture {
-            withAnimation(.easeInOut){
-                selectedSize = size
-            }
+                onTab()
         }
     }
 }
 
 struct SizeView_Previews: PreviewProvider {
     static var previews: some View {
-        SizeView(selectedSize: .constant(.large),size: .large)
+        SizeView(selectedSize: .large,size: .large)
     }
 }

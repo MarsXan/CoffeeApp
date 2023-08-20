@@ -12,8 +12,8 @@ class MainRouter: Router<MainViewSpec> {
     func presentHome() {
         navigateTo(.home)
     }
-    func presentDetailView(product:Product,animation: Namespace.ID){
-        navigateTo(.productDetail(product, animation))
+    func presentDetailView(product:Product){
+        navigateTo(.productDetail(product))
     }
     
     override func view(spec: MainViewSpec, route: Route) -> AnyView {
@@ -29,8 +29,8 @@ private extension MainRouter {
         case .home:
             HomeView()
                 .environmentObject(router(route: route))
-        case .productDetail(let product, let animation):
-            ProductDetailView(product: product, animation: animation)
+        case .productDetail(let product):
+            DetailView(product: product)
                 .environmentObject(router(route: route))
         }
     }

@@ -9,12 +9,15 @@ import SwiftUI
 
 struct CountView: View {
     @Binding var count:Int
+    var onIncrease:()->Void = {}
+    var onDecrease:()->Void = {}
+    
     
     var body: some View {
         HStack(spacing:16){
             Button{
                 if count > 0 {
-                    count -= 1
+                    onDecrease()
                 }
             }label: {
                 Image(Icons.minus)
@@ -26,7 +29,7 @@ struct CountView: View {
                 .font(.header4)
             
             Button{
-               count += 1
+               onIncrease()
             }label: {
                 Image(Icons.add)
                     .resizable()

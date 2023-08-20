@@ -15,10 +15,7 @@ struct FavoriteView: View {
             Color.coffeeLight
                 .ignoresSafeArea()
             Text("Favorite View")
-                .onTapGesture {
-                    print("Cliked")
-                    router.presentDetailView(product: Product(id: "", name: "", price: 123456, image: "", description: "", category: .bakery), animation: animation)
-                }
+               
         }
     }
 }

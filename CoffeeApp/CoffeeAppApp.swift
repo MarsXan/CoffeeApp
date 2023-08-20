@@ -27,6 +27,8 @@ struct CoffeeAppApp: App {
         DependencyResolver.register(type: HomeApiService.self, HomeApiService())
         DependencyResolver.register(type: HomeRepository.self, HomeRepositoryImpl())
         
+        DependencyResolver.register(type: DetailApiService.self, DetailApiService())
+        DependencyResolver.register(type: DetailRepository.self, DetailRepositoryImpl())
         
     }
 }
