@@ -25,19 +25,20 @@ struct ProductDetailView: View {
     var body: some View {
         ZStack(alignment: .top){
             Color.coffeeLight.ignoresSafeArea()
-            VStack{
+         
                 WebImage(url: URL(string: product.image))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .matchedGeometryEffect(id: product.name, in: animation)
-                    .frame(width: getRect().width, height: 350)
+                    .frame(width: getRect().width, height: getRect().height/2.5
+                    )
                     .cornerRadius(0)
                     .ignoresSafeArea()
                     .onTapGesture {
                         withAnimation(.easeInOut){
 //                            showDetail.toggle()
                         }
-                    }
+                    }.zIndex(1)
                 
                 
                 VStack{
@@ -51,15 +52,19 @@ struct ProductDetailView: View {
                 .frame(width:getRect().width)
                 .frame(maxHeight:.infinity)
                 .background{
-                    CurvedShape(height: getRect().height-270,curveHeight:80)
+                    CurvedShape(height: getRect().height-getRect().height/2.6,curveHeight:80)
                     .fill(Color.coffeeLight)
-                    .padding(.top,-80)
+                    .padding(.top,getRect().height/2.6)
                 }
                 .opacity(showContent ? 1 : 0)
                 .offset(y:showContent ? 0 : 100)
-                
-            }
+                .zIndex(2)
                 .ignoresSafeArea()
+            
+            
+                
+            
+                
            
             
         }
@@ -162,16 +167,23 @@ struct ProductDetailView: View {
     
 }
 
-//struct ProductDetailView_Previews: PreviewProvider {
-//    @Namespace var animation
-//    static var previews: some View {
-//        ProductDetailView(product: .init(
-//            id:"3",
-//            name: "Herbal Tea",
-//            price: 4.5,
-//            image: "https://img.freepik.com/free-photo/fresh-lemonade-rustic-table-with-organic-ingredients-generated-by-ai_188544-31783.jpg?t=st=1692198150~exp=1692201750~hmac=c7f5ee31f2483ad709e97770e5301e7b7800eb5fbeccfe659f4c167cfd99d998&w=1800",
-//            description: "Herbal teas—less commonly called tisanes are beverages made from the infusion or decoction of herbs, spices, or other plant material in hot water.",
-//            category: .hotTeas
-//        ))
-//    }
-//}
+struct ProductDetailView_Previews: PreviewProvider {
+   
+    
+    struct TestDetailView: View {
+            @Namespace var ns
+            var body: some View {
+                ProductDetailView(product: .init(
+                    id:"3",
+                    name: "Herbal Tea",
+                    price: 4.5,
+                    image: "https://img.freepik.com/free-photo/fresh-lemonade-rustic-table-with-organic-ingredients-generated-by-ai_188544-31783.jpg?t=st=1692198150~exp=1692201750~hmac=c7f5ee31f2483ad709e97770e5301e7b7800eb5fbeccfe659f4c167cfd99d998&w=1800",
+                    description: "Herbal teas—less commonly called tisanes are beverages made from the infusion or decoction of herbs, spices, or other plant material in hot water.",
+                    category: .hotTeas
+                ),animation: ns)
+            }
+        }
+        static var previews: some View {
+            TestDetailView()
+        }
+}
