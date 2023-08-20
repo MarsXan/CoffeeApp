@@ -24,7 +24,17 @@ struct ProductDetailView: View {
     
     var body: some View {
         ZStack(alignment: .top){
+            
             Color.coffeeLight.ignoresSafeArea()
+            
+            DetailsHeaderView(title: product.name,isFavorite: product.isFavorite,onBackPressed: {
+                router.navigateBack()
+            },onLikePressed: {
+                
+            })
+                .zIndex(4)
+                .padding()
+                .padding(.top)
          
                 WebImage(url: URL(string: product.image))
                     .resizable()
@@ -50,8 +60,8 @@ struct ProductDetailView: View {
                             .frame(height:110)
                             
                         Spacer()
-                        sizeView()
-                        countView()
+                        sizeCountainerView()
+                        CountView(count:$count)
                     }
                 }
                 
@@ -73,22 +83,17 @@ struct ProductDetailView: View {
             .ignoresSafeArea()
             
             
-                
-            
-                
-           
-            
         }
         .task {
             withAnimation{
                 showContent.toggle()
             }
             
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
     @ViewBuilder
-    private func sizeView() -> some View{
+    private func sizeCountainerView() -> some View{
         VStack {
             Text("Coffee Size")
                 .font(.header4)
@@ -96,41 +101,16 @@ struct ProductDetailView: View {
           
             HStack(alignment:.bottom){
                 Spacer()
-                SizeView(size: .small)
+                SizeView(selectedSize: $selectedSize, size: .small)
                 Spacer()
-                SizeView(size: .medium)
+                SizeView(selectedSize: $selectedSize, size: .medium)
                 Spacer()
-                SizeView(size: .large)
+                SizeView(selectedSize: $selectedSize, size: .large)
                 Spacer()
             }
         }.padding(.bottom,30)
     }
-    @ViewBuilder
-    private func countView() -> some View {
-        HStack(spacing:16){
-            Button{
-                if count > 0 {
-                    count -= 1
-                }
-            }label: {
-                Image(Icons.minus)
-                    .resizable()
-                    .frame(width:40,height:40)
-            }
-            
-            Text("\(count)")
-                .font(.header4)
-            
-            Button{
-               count += 1
-            }label: {
-                Image(Icons.add)
-                    .resizable()
-                    .frame(width:40,height:40)
-            }
-            
-        }.padding(.bottom,32)
-    }
+  
     @ViewBuilder
     private func addToCartView() -> some View {
         VStack(spacing:16){
@@ -148,31 +128,6 @@ struct ProductDetailView: View {
                 CurvedShape(height: 80)
                     .fill(Color.coffeeDark)
             }
-    }
-    
-    @ViewBuilder
-    private func SizeView(size:SizeType) -> some View {
-        VStack{
-            RoundedRectangle(cornerRadius: 16)
-                .fill(selectedSize == size ? Color.coffeeRed : .white)
-                .frame(width:size.containerSize ,height:size.containerSize)
-                .overlay{
-                    Image(Icons.cup)
-                        .resizable()
-                        .renderingMode(.template)
-                        .frame(width:size.iconSize,height:size.iconSize)
-                        .foregroundColor(selectedSize == size ? .white : .coffeeRed)
-                }
-            Text(size.rawValue)
-                .font(.cBodySemiBold)
-                .foregroundColor(.coffeeDark)
-                .opacity(selectedSize == size ? 1 : 0.5)
-        }.onTapGesture {
-            withAnimation(.easeInOut){
-                selectedSize = size
-            }
-        }
-    
     }
     
     
