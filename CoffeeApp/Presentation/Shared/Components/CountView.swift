@@ -11,10 +11,12 @@ struct CountView: View {
     @Binding var count:Int
     var onIncrease:()->Void = {}
     var onDecrease:()->Void = {}
+    var size = 40.0
+    var spacing = 10.0
     
     
     var body: some View {
-        HStack(spacing:16){
+        HStack(spacing:spacing){
             Button{
                 if count > 0 {
                     onDecrease()
@@ -22,8 +24,9 @@ struct CountView: View {
             }label: {
                 Image(Icons.minus)
                     .resizable()
-                    .frame(width:40,height:40)
-            }
+                    .aspectRatio( contentMode: .fill)
+                    
+            }.frame(width:size,height:size)
             
             Text("\(count)")
                 .font(.header4)
@@ -33,10 +36,11 @@ struct CountView: View {
             }label: {
                 Image(Icons.add)
                     .resizable()
-                    .frame(width:40,height:40)
-            }
+                    .aspectRatio( contentMode: .fill)
+                    
+            }.frame(width:size,height:size)
             
-        }.padding(.bottom,32)
+        }
     }
 }
 
