@@ -11,7 +11,7 @@ struct BasketHeaderView: View {
     var title:String
     var isFavorite:Bool = false
     var onBackPressed:()->Void = {}
-    var onEditPressed:()->Void = {}
+    var onDetailPressed:()->Void = {}
     var body: some View {
         HStack{
             Button{
@@ -28,11 +28,15 @@ struct BasketHeaderView: View {
             
             Spacer()
             Button{
-                onEditPressed()
+                onDetailPressed()
             }label: {
-                Image(Icons.edit)
-                    .resizable()
-                    .scaledToFill()
+                Circle()
+                    .fill(Color.coffeeRed)
+                    .frame(width:40,height:40)
+                    .overlay{
+                        Image(systemName: "doc.text.magnifyingglass")
+                            .foregroundColor(.white)
+                    }
             }.frame(width: 40,height:40)
             
         }.overlay{

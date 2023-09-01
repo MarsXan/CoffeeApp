@@ -10,6 +10,7 @@ import SwiftUI
 enum MainViewSpec: ViewSpec {
     case home
     case productDetail(Product)
+    case basketDetail(Basket)
 }
 extension MainViewSpec: Identifiable {
     

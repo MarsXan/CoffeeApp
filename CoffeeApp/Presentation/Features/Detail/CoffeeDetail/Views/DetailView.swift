@@ -61,6 +61,7 @@ struct DetailView: View {
                         },onDecrease: {
                             viewModel.onEvent(.decreaseCountByOne)
                         })
+                        
                     }
                 }
                 

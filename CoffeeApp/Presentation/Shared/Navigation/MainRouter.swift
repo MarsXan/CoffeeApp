@@ -16,6 +16,10 @@ class MainRouter: Router<MainViewSpec> {
         navigateTo(.productDetail(product))
     }
     
+    func presentBasketDetail(basket:Basket){
+        navigateTo(.basketDetail(basket))
+    }
+    
     override func view(spec: MainViewSpec, route: Route) -> AnyView {
         AnyView(buildView(spec: spec, route: route))
     }
@@ -32,6 +36,8 @@ private extension MainRouter {
         case .productDetail(let product):
             DetailView(product: product)
                 .environmentObject(router(route: route))
+        case.basketDetail(let basket):
+            BasketDetailView(basket:basket)
         }
     }
             

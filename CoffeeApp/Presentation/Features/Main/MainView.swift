@@ -59,6 +59,7 @@ struct MainView: View {
                         .environmentObject(router)
                         .tag(Tab.home)
                     BasketView()
+                        .environmentObject(router)
                         .tag(Tab.basket)
                     OrderListView()
                         .tag(Tab.orders)
