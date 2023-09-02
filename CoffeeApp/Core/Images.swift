@@ -11,4 +11,11 @@ struct Images{
     static let latte = "latte"
     static let error = "error"
     static let logo = "logo"
+    
+    static let coffee1 = "coffee1"
+    static let coffee2 = "coffee2"
+    static let coffee3 = "coffee3"
+    
+    static let coffeImageeList = [coffee1, coffee2, coffee3]
+    
 }

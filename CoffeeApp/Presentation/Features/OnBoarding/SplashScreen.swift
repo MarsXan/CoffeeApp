@@ -18,7 +18,7 @@ struct SplashScreen: View {
                 .renderingMode(.template)
                 .foregroundColor(.coffeeDark)
                 .scaledToFit()
-                .frame(width: 200, height: 200)
+                .frame(width: 250, height: 250)
         }
 
     }

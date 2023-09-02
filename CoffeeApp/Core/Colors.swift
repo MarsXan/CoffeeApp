@@ -23,4 +23,12 @@ extension Color {
     static var coffeeYellow: Color {
         .init("coffee-yellow")
     }
+    
+    static var coffeeBrown: Color {
+        .init("coffee-brown")
+    }
+    
+    static var coffeeMud2: Color {
+        .init("coffee-mud-2")
+    }
 }
