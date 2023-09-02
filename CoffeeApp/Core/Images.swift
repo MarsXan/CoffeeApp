@@ -10,4 +10,5 @@ struct Images{
     static let espresso = "espresso"
     static let latte = "latte"
     static let error = "error"
+    static let logo = "logo"
 }
