@@ -79,7 +79,7 @@ struct OnboardingView: View {
             // start button
             Button(action: {
                 viewModel.onboardingDone()
-                router.removeAllAndNavigateTo(.auth)
+                router.removeAllAndNavigateTo(.dashbooard)
             }, label: {
                 Text("Start")
                     .font(.header3)
