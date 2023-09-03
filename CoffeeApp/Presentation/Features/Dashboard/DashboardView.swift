@@ -33,7 +33,7 @@ struct DashboardView: View {
                 menuButton()
             }
             
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
 
