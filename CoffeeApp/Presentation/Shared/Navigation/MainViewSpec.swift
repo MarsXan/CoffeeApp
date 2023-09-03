@@ -11,6 +11,9 @@ enum MainViewSpec: ViewSpec {
     case home
     case productDetail(Product)
     case basketDetail(Basket)
+    case auth
+    case dashbooard
+    
 }
 extension MainViewSpec: Identifiable {
     

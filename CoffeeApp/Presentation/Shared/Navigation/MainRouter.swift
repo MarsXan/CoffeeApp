@@ -20,6 +20,15 @@ class MainRouter: Router<MainViewSpec> {
         navigateTo(.basketDetail(basket))
     }
     
+    func presentAuthView(){
+        navigateTo(.auth)
+    }
+    
+    func presentDashboard(){
+        navigateTo(.dashbooard)
+    }
+    
+    
     override func view(spec: MainViewSpec, route: Route) -> AnyView {
         AnyView(buildView(spec: spec, route: route))
     }
@@ -38,6 +47,15 @@ private extension MainRouter {
                 .environmentObject(router(route: route))
         case.basketDetail(let basket):
             BasketDetailView(basket:basket)
+            
+            
+        case .auth:
+            LoginView()
+                .environmentObject(router(route: route))
+        case .dashbooard:
+            DashboardView()
+                .environmentObject(router(route: route))
+        
         }
     }
             
