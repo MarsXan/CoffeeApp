@@ -38,6 +38,12 @@ class BaseViewModel<T>: ObservableObject {
         viewState = state
     }
     
+    func runAfter(_ delay:Double, block:@escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            block()
+        }
+    }
+    
     
     
     
