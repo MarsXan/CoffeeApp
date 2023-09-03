@@ -45,6 +45,13 @@ extension Router {
         state.navigationPath.append(viewSpec)
     }
     
+    func removeAllAndNavigateTo(_ viewSpec: T) {
+        state.navigationPath.removeAll()
+        state.navigationPath.append(viewSpec)
+    }
+    
+    
+    
     func navigateBack() {
         state.navigationPath.removeLast()
     }

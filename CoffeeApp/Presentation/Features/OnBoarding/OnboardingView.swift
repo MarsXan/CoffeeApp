@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct OnboardingView: View {
-   @State private var currentIndex = 0
+    @EnvironmentObject var router:MainRouter
+    @State private var currentIndex = 0
+    private var viewModel = OnBoardingViewModel()
+    
+    
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [.coffeeMud2, .coffeeBrown]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -31,6 +35,8 @@ struct OnboardingView: View {
                 
             }
         }
+            
+        
     }
     
     @ViewBuilder
@@ -72,7 +78,8 @@ struct OnboardingView: View {
             
             // start button
             Button(action: {
-                
+                viewModel.onboardingDone()
+                router.removeAllAndNavigateTo(.auth)
             }, label: {
                 Text("Start")
                     .font(.header3)

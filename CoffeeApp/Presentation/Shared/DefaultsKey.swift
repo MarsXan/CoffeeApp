@@ -11,4 +11,5 @@ extension Defaults.Keys {
     static let user = Key<User?>("user")
     static let userId = Key<String>("userId",default: "-1")
     static let likedProducts = Key<[String]>("likedProducts",default: [])
+    static let isOnboardingPresented = Key<Bool>("isOnboardingPresented",default: false)
 }
