@@ -24,7 +24,7 @@ CoffeeApp is a mobile application that allows users to order coffee from a coffe
 - SwiftUI
 - Firebase
 - Xcode 14.3
-- Swift 6.4
+- ios 16.4
 
 
 # Core Features
